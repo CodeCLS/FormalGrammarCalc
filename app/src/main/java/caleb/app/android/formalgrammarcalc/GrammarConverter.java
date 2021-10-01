@@ -20,12 +20,33 @@ public class GrammarConverter {
         rules.put("Ab","ab");
         rules.put("Aa","aa");
     }
+    private boolean regularGrammaticInspectorOutcome(String outcome){
+        int amountOfUpper = 0;
+        int amountOfLower = 0;
+        for (int i = 0; i< outcome.length();i++){
+            char character = outcome.charAt(i);
+            if (character >= 'A' && character <= 'Z'){
+                amountOfUpper+=1;
+            }
+            else if (character >= 'a' && character <= 'z'){
+                amountOfLower+=1;
+            }
+        }
+        if (amountOfUpper >= 1){
+            return false;
+        }
+        else{
+            return true;
+        }
+
+    }
 
     /**
      * A recursive function that transforms non terminal symbols to terminal symbols if possible
      * @param string the base string (example: ABS)
      * @return the base string transformed to terminal symbols if possible
      */
+
     public String notTerminalToTerminal(String string){
         for(int i = 0; i< string.length(); i++){
             Character one = string.charAt(i);
